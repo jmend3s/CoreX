@@ -1,0 +1,31 @@
+/ {
+	pwmleds {
+		compatible = "pwm-leds";
+
+		external_pwm_led: external_pwm_led {
+			pwms = <&flexpwm4_pwm2 0 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+		};
+	};
+
+	aliases {
+		pwm-led0 = &external_pwm_led;
+	};
+};
+
+&pinctrl {
+	pinmux_flexpwm4: pinmux_flexpwm4 {
+		group0 {
+			pinmux = <&iomuxc_gpio_emc_04_flexpwm4_pwma2>;
+			drive-strength = "r0-6";
+			nxp,speed = "100-mhz";
+			bias-pull-down;
+			slew-rate = "fast";
+		};
+	};
+};
+
+&flexpwm4_pwm2 {
+	status = "okay";
+	pinctrl-0 = <&pinmux_flexpwm4>;
+	pinctrl-names = "default";
+};
