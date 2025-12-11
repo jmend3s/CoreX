@@ -11,6 +11,7 @@
 # sudo apt install terminator
 # sudo apt install xdotool
 
+
 set -e
 
 IMAGE_NAME="zephyr-dev"

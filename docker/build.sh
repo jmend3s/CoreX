@@ -4,6 +4,7 @@
 # CoreX Docker Image Build Script
 # ========================================================================
 
+
 set -e
 
 IMAGE_NAME="zephyr-dev"
