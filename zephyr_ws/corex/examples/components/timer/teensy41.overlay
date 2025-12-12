@@ -1,0 +1,17 @@
+
+/ {
+	aliases
+	{
+		gpioled0 = &externalled;
+	};
+
+	leds
+	{
+		compatible = "gpio-leds";
+		externalled: gpio0
+		{
+			gpios = <&gpio3 23 GPIO_ACTIVE_LOW>;
+			label = "Custom LED";
+		};
+	};
+};
