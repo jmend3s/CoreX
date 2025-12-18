@@ -1,0 +1,40 @@
+
+/ {
+	zephyr,user
+	{
+		io-channels = <&adc1 7>;
+	};
+};
+
+&pinctrl
+{
+	pinmux_adc1: pinmux_adc1
+	{
+		group0
+		{
+			pinmux = <&iomuxc_gpio_ad_b1_02_adc1_in7>;
+			bias-disable;
+			drive-strength = "r0-6";
+			slew-rate = "slow";
+			nxp,speed = "100-mhz";
+		};
+	};
+};
+
+&adc1
+{
+	status = "okay";
+	pinctrl-0 = <&pinmux_adc1>;
+	pinctrl-names = "default";
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	channel@7
+	{
+		reg = <7>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
+};
