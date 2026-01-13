@@ -1,0 +1,31 @@
+
+&zephyr_udc0
+{
+	cdc_acm_uart0
+	{
+		compatible = "zephyr,cdc-acm-uart";
+		label = "Zephyr USB CDC-ACM";
+	};
+};
+
+/ {
+    aliases
+	{
+        spitest = &spidev0;
+    };
+};
+
+&lpspi4
+{
+    status = "okay";
+	pinctrl-0 = <&pinmux_lpspi4>;
+    pinctrl-names = "default";
+
+	spidev0: spidev0@0
+	{
+		compatible = "vnd,spi-device";
+		reg = <0>;
+		spi-max-frequency = <1000000>;
+		status = "okay";
+	};
+};
