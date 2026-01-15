@@ -1,0 +1,26 @@
+
+&zephyr_udc0
+{
+	cdc_acm_uart0
+	{
+		compatible = "zephyr,cdc-acm-uart";
+		label = "Zephyr USB CDC-ACM";
+	};
+};
+
+/ {
+	aliases
+	{
+		led0 = &onboardLed;
+	};
+
+	leds
+	{
+		compatible = "gpio-leds";
+		onboardLed: onboardLed0
+		{
+			gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
+			label = "Onboard LED";
+		};
+	};
+};

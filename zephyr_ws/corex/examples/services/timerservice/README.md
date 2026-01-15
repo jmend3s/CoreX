@@ -1,4 +1,4 @@
-# TimerService Example #
+# TimerService Example # Obsolete
 
 Example for software timer service
 

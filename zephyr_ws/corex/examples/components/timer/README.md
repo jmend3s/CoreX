@@ -1,4 +1,4 @@
-# Timer Example #
+# Timer Example # not updated
 
 Using software timer to blink LED on pin 30
 
