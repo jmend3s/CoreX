@@ -17,3 +17,4 @@ Where the yellow and green represent the clock(SCK) and the data(MISO/MOSI) resp
  - sdi - 12 (B0_01)
 
 *Source* ```/home/$USER/zephyrproject/zephyr/boards/pjrc/teensy4/teensy4-pinctrl.dtsi``` -> **<pinmux_lpspi4>**
+https://forum.pjrc.com/index.php?threads/has-anyone-used-zephyr-on-the-teensy-boards.76822/

@@ -6,6 +6,7 @@
 #include "Gpio.h"
 #include "TimerService.h"
 
+
 class BlinkService : public SchedulableComponent
 {
 public:
@@ -19,5 +20,6 @@ private:
     Gpio& _pin;
     TimerService& _timer;
 };
+
 
 #endif

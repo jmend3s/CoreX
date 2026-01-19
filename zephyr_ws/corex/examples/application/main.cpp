@@ -7,8 +7,7 @@
 
 #include <zephyr/kernel.h>
 
-#include <cstdint>
-
+#include "SystemTime.h"
 
 #define LED_NODE DT_ALIAS(led0)
 
@@ -20,13 +19,29 @@ public:
     Application()
         : _led(ledSpec, Gpio::Mode::Output)
         , _blink(_led, _timer)
-        , _components { &_timer, &_blink }
-        , _system(_components, _tickStorage, 2)
-    {}
-
-    void loop()
     {
-        _system.run();
+        _components[0] = &_timer;
+        _components[1] = &_blink;
+    }
+
+    SchedulableComponent** components()
+    {
+        return _components;
+    }
+
+    uint64_t* storage()
+    {
+        return _tickStorage;
+    }
+
+    size_t count()
+    {
+        return 2;
+    }
+
+    SystemTime& time()
+    {
+        return _time;
     }
 
 private:
@@ -37,11 +52,14 @@ private:
 
     uint64_t _tickStorage[2];
     SchedulableComponent* _components[2];
-    System _system;
+
+    SystemTime _time;
 };
 
 int main()
 {
     Application app;
-    app.loop();
+    System system(app.components(), app.storage(), app.count(), app.time());
+
+    system.run();
 }
