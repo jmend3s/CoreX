@@ -1,37 +1,24 @@
 
+#include "../testcomponent/TestComponent.h"
+
 #include "Scheduler.h"
 #include "TickCounter.h"
 
 #include <gtest/gtest.h>
 
 
-class TestComponent : public SchedulableComponent
+class SchedulerTestsFixture : public ::testing::Test
 {
 public:
-    void initialize() override { init = true; }
-    void update() override { _currentUpdateTurn += 1; }
-    uint32_t periodTick() const override { return period; }
-
-    uint32_t currentTick() const { return _currentUpdateTurn; }
-    bool initialized() const { return init; }
-
-    uint32_t period;
-
-private:
-    bool init = false;
-    uint32_t _currentUpdateTurn = 0;
-};
-
-class SchedulerTests : public ::testing::Test
-{
-public:
-    SchedulerTests()
+    SchedulerTestsFixture()
         : _components{ &_component1, &_component2, &_component3 }
+        , _lastTickStorage{ 0, 0, 0 }
+        , _count(3)
         , _scheduler(_components, _lastTickStorage, _count, _tickCounter)
     {
-        _component1.period = 1;
-        _component2.period = 2;
-        _component3.period = 3;
+        _component1.setUpdatePeriod(1);
+        _component2.setUpdatePeriod(2);
+        _component3.setUpdatePeriod(3);
     }
 
     void SetUp() override
@@ -44,15 +31,16 @@ protected:
     TestComponent _component2;
     TestComponent _component3;
 
-    size_t _count = 3;
-    uint64_t _lastTickStorage[3] = {};
     SchedulableComponent* _components[3];
+    uint64_t _lastTickStorage[3];
+    size_t _count;
+
     TickCounter _tickCounter;
     Scheduler _scheduler;
 };
 
 
-TEST_F(SchedulerTests, SchedulerInitialization)
+TEST_F(SchedulerTestsFixture, SchedulerInitialization)
 {
     std::array<TestComponent*, 3> const components { { &_component1, &_component2, &_component3 } };
 
@@ -64,7 +52,7 @@ TEST_F(SchedulerTests, SchedulerInitialization)
     }
 }
 
-TEST_F(SchedulerTests, DoesNotUpdateBeforePeriod)
+TEST_F(SchedulerTestsFixture, DoesNotUpdateBeforePeriod)
 {
     _scheduler.runOnce();
 
@@ -76,7 +64,7 @@ TEST_F(SchedulerTests, DoesNotUpdateBeforePeriod)
     }
 }
 
-TEST_F(SchedulerTests, DoesNotUpdateTwiceOnSameTick)
+TEST_F(SchedulerTestsFixture, DoesNotUpdateTwiceOnSameTick)
 {
     _tickCounter.advance();
     _scheduler.runOnce();
@@ -85,7 +73,7 @@ TEST_F(SchedulerTests, DoesNotUpdateTwiceOnSameTick)
     ASSERT_EQ(_component1.currentTick(), 1);
 }
 
-TEST_F(SchedulerTests, HandlesTickJumpCorrectly)
+TEST_F(SchedulerTestsFixture, HandlesTickJumpCorrectly)
 {
     _tickCounter.advance();
     _tickCounter.advance();
@@ -98,7 +86,7 @@ TEST_F(SchedulerTests, HandlesTickJumpCorrectly)
     EXPECT_EQ(_component3.currentTick(), 1);
 }
 
-TEST_F(SchedulerTests, UpdatesComponentsAccordingToPeriodTicks)
+TEST_F(SchedulerTestsFixture, UpdatesComponentsAccordingToPeriodTicks)
 {
     struct TestCase
     {

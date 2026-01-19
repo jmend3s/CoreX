@@ -1,6 +1,6 @@
 
 target_sources(corekitTests
     PRIVATE
-        SchedulerTests.cpp
+        SchedulerTestsFixture.cpp
         TimerServiceTests.cpp
 )
