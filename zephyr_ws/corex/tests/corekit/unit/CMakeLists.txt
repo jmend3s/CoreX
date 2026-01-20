@@ -5,4 +5,5 @@ target_sources(corekitTests
         SystemClockTests.cpp
         TickCounterTests.cpp
         TimerServiceTests.cpp
+        TimerTests.cpp
 )

@@ -3,6 +3,7 @@ add_executable(corekitTests)
 
 target_sources(corekitTests
     PRIVATE
+        ${CMAKE_SOURCE_DIR}/corekit/components/Timer.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/Scheduler.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/System.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/SystemClock.cpp
