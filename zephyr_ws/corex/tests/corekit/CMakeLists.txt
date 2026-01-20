@@ -4,6 +4,7 @@ add_executable(corekitTests)
 target_sources(corekitTests
     PRIVATE
         ${CMAKE_SOURCE_DIR}/corekit/components/Timer.cpp
+        ${CMAKE_SOURCE_DIR}/corekit/services/TimerService.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/Scheduler.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/System.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/SystemClock.cpp
@@ -32,7 +33,6 @@ target_include_directories(corekitTests
 
 target_link_libraries(corekitTests
     PRIVATE
-#        DeviceManagerLib
         GTest::gmock_main
 )
 
