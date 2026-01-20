@@ -6,6 +6,7 @@
 
 #include <gtest/gtest.h>
 
+#include "SystemClock.h"
 
 class SystemTestFixture : public ::testing::Test
 {
@@ -35,12 +36,34 @@ protected:
     System _system;
 };
 
+TEST_F(SystemTestFixture, InitializeDoesNotAdvanceTick)
+{
+    EXPECT_EQ(SystemClock::currentTick(), 0);
+    EXPECT_EQ(_component.currentTick(), 0);
+}
 
 TEST_F(SystemTestFixture, AdvancesTickAndRunsScheduler)
 {
     for (int i = 0; i < 5; i++)
     {
-        _system.runOnce();
+        EXPECT_EQ(SystemClock::currentTick(), i);
         EXPECT_EQ(_component.currentTick(), i);
+        _system.runOnce();
     }
+}
+
+TEST_F(SystemTestFixture, SchedulerRunsOncePerTick)
+{
+    _system.runOnce();
+    _system.runOnce();
+
+    EXPECT_EQ(_component.currentTick(), 2);
+}
+
+TEST_F(SystemTestFixture, UsesSystemTimeForPacing)
+{
+    _system.runOnce();
+    _system.pace();
+
+    EXPECT_GT(_time.slept_us, 0);
 }
