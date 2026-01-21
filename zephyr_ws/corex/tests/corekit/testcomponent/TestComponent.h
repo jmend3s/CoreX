@@ -2,10 +2,10 @@
 #ifndef __TEST_COMPONENT_H__
 #define __TEST_COMPONENT_H__
 
-#include "SchedulableComponent.h"
+#include "Component.h"
 
 
-class TestComponent : public SchedulableComponent
+class TestComponent : public Component
 {
 public:
     void initialize() override;

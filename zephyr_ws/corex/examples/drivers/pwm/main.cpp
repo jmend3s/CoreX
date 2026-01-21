@@ -2,17 +2,16 @@
 #include "Pwm.h"
 
 #include <zephyr/kernel.h>
+#include <zephyr/drivers/pwm.h>
 
 
-#define PWM_LED_NODE DT_ALIAS(pwm_led0)
-
-static constexpr pwm_dt_spec pwmLedSpec = PWM_DT_SPEC_GET(PWM_LED_NODE);
+static constexpr pwm_dt_spec pwmLedSpec = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led0));
+static PwmSpec ledSpec(reinterpret_cast<uintptr_t>(&pwmLedSpec));
 
 int main()
 {
-    Pwm pwmLed(pwmLedSpec);
+    Pwm pwmLed(ledSpec);
 
-    pwmLed.initialize();
     uint32_t const period = pwmLed.periodNs();
     uint32_t const step = period / 100U;
 

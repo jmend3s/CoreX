@@ -1,7 +1,7 @@
 
 #include "../testcomponent/TestComponent.h"
 
-#include "Scheduler.h"
+#include "../../../../corekit/scheduler/Scheduler.h"
 #include "TickCounter.h"
 
 #include <gtest/gtest.h>

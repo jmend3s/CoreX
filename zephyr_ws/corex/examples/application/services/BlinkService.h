@@ -2,19 +2,19 @@
 #ifndef __BLINK_SERVICE_H__
 #define __BLINK_SERVICE_H__
 
-#include "SchedulableComponent.h"
+#include "Component.h"
 #include "Gpio.h"
 #include "TimerService.h"
 
 
-class BlinkService : public SchedulableComponent
+class BlinkService : public Component
 {
 public:
     BlinkService(Gpio& pin, TimerService& timer);
 
     void initialize() override;
     void update() override;
-    uint32_t periodTick() const override;
+    uint32_t period() const override;
 
 private:
     Gpio& _pin;

@@ -6,6 +6,14 @@
 	};
 };
 
+
+/ {
+	aliases
+	{
+		adc0 = &pinmux_adc1;
+	};
+};
+
 &pinctrl
 {
 	pinmux_adc1: pinmux_adc1
@@ -20,6 +28,8 @@
 		};
 	};
 };
+
+
 
 &adc1
 {

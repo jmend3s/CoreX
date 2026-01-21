@@ -28,7 +28,7 @@ public:
 protected:
     TestComponent _component;
 
-    SchedulableComponent* _components[1];
+    Component* _components[1];
     uint64_t _tickStorage[1];
     size_t _count;
 

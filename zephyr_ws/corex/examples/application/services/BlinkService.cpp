@@ -10,7 +10,7 @@ BlinkService::BlinkService(Gpio& pin, TimerService& timer)
 
 void BlinkService::initialize()
 {
-    _pin.initialize();
+    _pin.configure();
 }
 
 void BlinkService::update()
@@ -21,7 +21,7 @@ void BlinkService::update()
     }
 }
 
-uint32_t BlinkService::periodTick() const
+uint32_t BlinkService::period() const
 {
     return 1;
 }
