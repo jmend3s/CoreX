@@ -7,3 +7,5 @@ target_sources(corekitTests
         TimerServiceTests.cpp
         TimerTests.cpp
 )
+
+add_subdirectory(drivers)

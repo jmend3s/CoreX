@@ -10,7 +10,7 @@ class TestComponent : public Component
 public:
     void initialize() override;
     void update() override;
-    uint32_t periodTick() const override;
+    uint32_t period() const override;
 
     uint32_t currentTick() const;
     bool initialized() const;

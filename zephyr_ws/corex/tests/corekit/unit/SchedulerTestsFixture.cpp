@@ -31,7 +31,7 @@ protected:
     TestComponent _component2;
     TestComponent _component3;
 
-    SchedulableComponent* _components[3];
+    Component* _components[3];
     uint64_t _lastTickStorage[3];
     size_t _count;
 

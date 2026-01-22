@@ -11,7 +11,7 @@ void TestComponent::update()
     _currentUpdateTurn += 1;
 }
 
-uint32_t TestComponent::periodTick() const
+uint32_t TestComponent::period() const
 {
     return _period;
 }
