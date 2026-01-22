@@ -5,13 +5,15 @@ target_sources(corekitTests
     PRIVATE
         ${CMAKE_SOURCE_DIR}/corekit/components/Timer.cpp
         ${CMAKE_SOURCE_DIR}/corekit/drivers/Gpio.cpp
+        ${CMAKE_SOURCE_DIR}/corekit/drivers/Pwm.cpp
         ${CMAKE_SOURCE_DIR}/corekit/services/TimerService.cpp
         ${CMAKE_SOURCE_DIR}/corekit/scheduler/Scheduler.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/System.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/SystemClock.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/TickCounter.cpp
         ${CMAKE_SOURCE_DIR}/corekit/tests/FakeSystemTime.cpp
-        ${CMAKE_SOURCE_DIR}/corekit/tests/hal/HalGpioFake.cpp
+        ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalGpio.cpp
+        ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalPwm.cpp
 )
 
 add_subdirectory(integration)

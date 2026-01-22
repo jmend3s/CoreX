@@ -1,11 +1,9 @@
 
 #include "Gpio.h"
-#include "HalGpioFake.h"
+#include "FakeHalGpio.h"
 
 #include <gtest/gtest.h>
 
-
-struct FakeGpioState;
 
 class GpioTestFixture : public ::testing::Test
 {
@@ -58,7 +56,7 @@ TEST_F(GpioTestFixture, GpioToggles)
 TEST_F(GpioTestFixture, GpioRead)
 {
     pin.set(Gpio::State::Low);
-    
+
     EXPECT_FALSE(state.level);
     EXPECT_EQ(pin.read(), Gpio::State::Low);
 
