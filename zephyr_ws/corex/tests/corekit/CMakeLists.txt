@@ -4,6 +4,7 @@ add_executable(corekitTests)
 target_sources(corekitTests
     PRIVATE
         ${CMAKE_SOURCE_DIR}/corekit/components/Timer.cpp
+        ${CMAKE_SOURCE_DIR}/corekit/drivers/Adc.cpp
         ${CMAKE_SOURCE_DIR}/corekit/drivers/Gpio.cpp
         ${CMAKE_SOURCE_DIR}/corekit/drivers/Pwm.cpp
         ${CMAKE_SOURCE_DIR}/corekit/services/TimerService.cpp
@@ -12,6 +13,7 @@ target_sources(corekitTests
         ${CMAKE_SOURCE_DIR}/corekit/system/SystemClock.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/TickCounter.cpp
         ${CMAKE_SOURCE_DIR}/corekit/tests/FakeSystemTime.cpp
+        ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalAdc.cpp
         ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalGpio.cpp
         ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalPwm.cpp
 )
