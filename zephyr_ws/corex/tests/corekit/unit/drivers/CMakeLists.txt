@@ -4,4 +4,5 @@ target_sources(corekitTests
         AdcTests.cpp
         GpioTests.cpp
         PwmTests.cpp
+        SpiTests.cpp
 )

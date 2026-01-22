@@ -7,6 +7,7 @@ target_sources(corekitTests
         ${CMAKE_SOURCE_DIR}/corekit/drivers/Adc.cpp
         ${CMAKE_SOURCE_DIR}/corekit/drivers/Gpio.cpp
         ${CMAKE_SOURCE_DIR}/corekit/drivers/Pwm.cpp
+        ${CMAKE_SOURCE_DIR}/corekit/drivers/Spi.cpp
         ${CMAKE_SOURCE_DIR}/corekit/services/TimerService.cpp
         ${CMAKE_SOURCE_DIR}/corekit/scheduler/Scheduler.cpp
         ${CMAKE_SOURCE_DIR}/corekit/system/System.cpp
@@ -16,6 +17,7 @@ target_sources(corekitTests
         ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalAdc.cpp
         ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalGpio.cpp
         ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalPwm.cpp
+        ${CMAKE_SOURCE_DIR}/corekit/tests/hal/FakeHalSpi.cpp
 )
 
 add_subdirectory(integration)
