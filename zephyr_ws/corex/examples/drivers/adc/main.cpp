@@ -4,21 +4,20 @@
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/adc.h>
 
-#define LED_NODE DT_ALIAS(adc0)
 
-static constexpr adc_dt_spec adcLedSpec = ADC_DT_SPEC_GET(DT_ALIAS(adc0));
-static AdcSpec adcSpec(reinterpret_cast<uintptr_t>(&adcLedSpec));
+static constexpr adc_dt_spec adcChannel = ADC_DT_SPEC_GET(DT_PATH(zephyr_user));
+static AdcSpec adcSpec(reinterpret_cast<uintptr_t>(&adcChannel));
 
 int main()
 {
-    // Gpio led(ledSpec, Gpio::Mode::Output);
-    // led.initialize();
-    //
-    // while (true)
-    // {
-    //     led.set(Gpio::State::High);
-    //     k_sleep(K_SECONDS(1));
-    //     led.set(Gpio::State::Low);
-    //     k_sleep(K_SECONDS(1));
-    // }
+    Adc adc(adcSpec);
+
+    adc.initialize();
+
+    while (true)
+    {
+        adc.read();
+        auto lastRead = adc.lastReading();
+        k_sleep(K_MSEC(1000));
+    }
 }
