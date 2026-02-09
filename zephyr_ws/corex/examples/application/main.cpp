@@ -1,19 +1,19 @@
 
-#include "services/BlinkService.h"
 
 #include "System.h"
+#include "SystemTime.h"
 #include "TimerService.h"
 #include "Gpio.h"
+
+#include "services/BlinkService.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 
-#include "SystemTime.h"
-
-#define LED_NODE DT_ALIAS(led0)
+#include <cstdint>
 
 
-static constexpr gpio_dt_spec ledDt = GPIO_DT_SPEC_GET(LED_NODE, gpios);
+static constexpr gpio_dt_spec ledDt = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 static  GpioSpec ledSpec(reinterpret_cast<uintptr_t>(&ledDt));
 
 class Application
