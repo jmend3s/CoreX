@@ -10,8 +10,6 @@
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 
-#include <cstdint>
-
 
 static constexpr gpio_dt_spec ledDt = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 static  GpioSpec ledSpec(reinterpret_cast<uintptr_t>(&ledDt));

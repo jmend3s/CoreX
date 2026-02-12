@@ -6,6 +6,15 @@
 	};
 };
 
+&zephyr_udc0
+{
+	cdc_acm_uart0
+	{
+		compatible = "zephyr,cdc-acm-uart";
+		label = "Zephyr USB CDC-ACM";
+	};
+};
+
 &pinctrl
 {
 	pinmux_adc1: pinmux_adc1
