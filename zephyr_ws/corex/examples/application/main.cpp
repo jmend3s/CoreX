@@ -1,7 +1,7 @@
 
 
 #include "System.h"
-#include "SystemTime.h"
+#include "TimeSource.h"
 #include "TimerService.h"
 #include "Gpio.h"
 
@@ -18,7 +18,7 @@ class Application
 {
 public:
     Application()
-        : _led(ledSpec, Gpio::Mode::Output)
+        : _led(ledSpec, GpioMode::Output)
         , _blink(_led, _timer)
     {
         _components[0] = &_timer;
@@ -40,7 +40,7 @@ public:
         return 2;
     }
 
-    SystemTime& time()
+    TimeSource& time()
     {
         return _time;
     }
@@ -54,7 +54,7 @@ private:
     uint64_t _tickStorage[2];
     Component* _components[2];
 
-    SystemTime _time;
+    TimeSource _time;
 };
 
 int main()

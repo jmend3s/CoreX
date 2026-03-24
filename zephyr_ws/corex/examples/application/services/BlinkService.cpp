@@ -2,7 +2,7 @@
 #include "BlinkService.h"
 
 
-BlinkService::BlinkService(Gpio& pin, TimerService& timer)
+BlinkService::BlinkService(IGpio& pin, TimerService& timer)
     : _pin(pin)
     , _timer(timer)
 {

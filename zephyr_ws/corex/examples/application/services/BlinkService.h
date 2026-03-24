@@ -10,14 +10,14 @@
 class BlinkService : public Component
 {
 public:
-    BlinkService(Gpio& pin, TimerService& timer);
+    BlinkService(IGpio& pin, TimerService& timer);
 
     void initialize() override;
     void update() override;
     uint32_t period() const override;
 
 private:
-    Gpio& _pin;
+    IGpio& _pin;
     TimerService& _timer;
 };
 

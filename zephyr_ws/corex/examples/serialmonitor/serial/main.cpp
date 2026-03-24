@@ -1,5 +1,5 @@
 
-#include "SystemPrint.h"
+#include "Printer.h"
 #include "TimerMs.h"
 
 #include <zephyr/kernel.h>
@@ -16,7 +16,7 @@ int main()
         timer.update();
         if (timer.elapsed())
         {
-            SystemPrint::print("Tick... count: %i\n", tickCount++);
+            Printer::print("Tick... count: %i\n", tickCount++);
         }
     }
 }
