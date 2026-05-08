@@ -1,7 +1,9 @@
 
-/ {
-	zephyr,user
+&zephyr_udc0
+{
+	cdc_acm_uart0
 	{
-		io-channels = <&adc1 7>;
+		compatible = "zephyr,cdc-acm-uart";
+		label = "Zephyr USB CDC-ACM";
 	};
 };
