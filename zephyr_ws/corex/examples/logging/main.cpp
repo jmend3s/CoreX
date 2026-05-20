@@ -1,27 +1,26 @@
 
-#include "Delay.h"
-
+#include "Printer.h"
 #include "LoggerWorker.h"
 #include "LoggerMacros.h"
-#include "Printer.h"
+
+#include "Delay.h"
 
 
-#define CK_LOGGER_MODULE "MAIN"
+#define CK_LOG_MODULE "MAIN"
 
 int main()
 {
     Printer printer;
     LoggerWorker loggerWorker(printer);
 
+    int32_t i = 42;
 
-    CK_LOG_INFO("SYSTEM START");
-    loggerWorker.work();
+
     while (true)
     {
-        // CK_LOG_INFO("Hello World");
+        CK_LOG_INFO("Hello World", i, 420);
+        loggerWorker.work();
 
-        // loggerWorker.work();
-
-        // Delay::ms(500);
+        Delay::ms(500);
     }
 }
