@@ -14,11 +14,14 @@ int main()
     LoggerWorker loggerWorker(printer);
 
     int32_t i = 42;
+    int32_t ii = -42;
+    float f = 4.2f;
+    float ff = -4.2f;
 
 
     while (true)
     {
-        CK_LOG_INFO("Hello World", i, 420);
+        CK_LOG_INFO("Hello World", i, ii, f, ff);
         loggerWorker.work();
 
         Delay::ms(500);
