@@ -1,0 +1,15 @@
+
+- Threads
+- Logging v2
+
+- ISR
+
+- Result -> template<typename T>
+            class Expected
+            {
+                T value;
+                Error error;
+            };
+
+            or even:
+                Result<T>

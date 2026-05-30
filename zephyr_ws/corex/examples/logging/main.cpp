@@ -8,6 +8,8 @@
 #include "Delay.h"
 #include "serializers/types/Hexadecimal.h"
 #include "serializers/types/Binary.h"
+#include <cstdint>
+
 
 int main()
 {
