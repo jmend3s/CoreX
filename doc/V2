@@ -1,15 +1,19 @@
 
-- Threads
+- Battery module v2
 - Logging v2
+
+- messaging layer
+
+- Threads
 
 - ISR
 
-- Result -> template<typename T>
-            class Expected
-            {
-                T value;
-                Error error;
-            };
+- Result v2 -> template<typename T>
+               class Expected
+               {
+                   T value;
+                   Error error;
+               };
 
-            or even:
-                Result<T>
+               or even:
+                   Result<T>
