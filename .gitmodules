@@ -1,3 +1,7 @@
 [submodule "zephyr_ws/corekit"]
 	path = zephyr_ws/corekit
 	url = git@github.com:jmend3s/CoreKit.git
+
+[submodule "docker"]
+	path = docker
+	url = git@github.com:jmend3s/docker-coreX.git
