@@ -1,0 +1,53 @@
+
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/esp32c3-pinctrl.h>
+
+
+/ {
+    chosen
+    {
+        zephyr,console = &usb_serial;
+        zephyr,shell-uart = &usb_serial;
+    };
+
+    aliases
+    {
+        spitest = &myspi_device;
+    };
+};
+
+&pinctrl
+{
+    spi2_custom: spi2_custom
+    {
+        group1
+        {
+            pinmux = <SPIM2_SCLK_GPIO7>,
+                     <SPIM2_MOSI_GPIO4>;
+            output-enable;
+        };
+
+        group2
+        {
+            pinmux = <SPIM2_MISO_GPIO5>;
+            input-enable;
+        };
+    };
+};
+
+&spi2
+{
+    status = "okay";
+
+    pinctrl-0 = <&spi2_custom>;
+    pinctrl-names = "default";
+
+    cs-gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+
+    myspi_device: spi-dev@0
+    {
+        compatible = "vnd,spi-device";
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+    };
+};

@@ -1,0 +1,7 @@
+/home/jmendes/zephyr_ws/corekit/drivers/communication/nrf24/Nrf24Device.cpp: In member function 'Result Nrf24Device::initialize(const Config&)':
+/home/jmendes/zephyr_ws/corekit/drivers/communication/nrf24/Nrf24Device.cpp:23:19: warning: operation on 'configuration' may be undefined [-Wsequence-point]
+   23 |     configuration = config.isReceiver ?
+      |     ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+   24 |         configuration |= ConfigBits::PrimRx :
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   25 |         configuration &= ~ConfigBits::PrimRx;

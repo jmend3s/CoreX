@@ -1,9 +1,8 @@
 
+#include "platform/Spi.h"
+#include "PrinterK.h"
+#include "Delay.h"
 
-#include "Spi.h"
-
-#include <zephyr/kernel.h>
-#include <zephyr/sys/printk.h>
 #include <zephyr/drivers/spi.h>
 
 
@@ -21,10 +20,11 @@ int main()
     while (true)
     {
         rx = 0x00;
-        if (spi.transceive(&tx, &rx, 1))
+        Result const transceive = spi.transceive(&tx, &rx, 1);
+        if (transceive.isOk())
         {
-            printk("TX=0x%02X RX=0x%02X\n", tx, rx);
+            PrinterK::print("TX=0x%02X RX=0x%02X\n", tx, rx);
         }
-       k_sleep(K_MSEC(1000));
+       Delay::ms(1000);
     }
 }
