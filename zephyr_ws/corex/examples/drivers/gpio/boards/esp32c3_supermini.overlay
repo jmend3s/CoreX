@@ -1,0 +1,15 @@
+
+/ {
+    aliases {
+        led0 = &led0;
+    };
+
+    leds {
+        compatible = "gpio-leds";
+
+        led0: led0 {
+            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+            label = "Onboard LED";
+        };
+    };
+};

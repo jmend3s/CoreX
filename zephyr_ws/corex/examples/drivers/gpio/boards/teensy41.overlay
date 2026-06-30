@@ -2,7 +2,7 @@
 / {
 	aliases
 	{
-		gpioled0 = &externalled;
+		led0 = &externalled;
 	};
 
 	leds

@@ -3,7 +3,7 @@
 #define __BLINK_SERVICE_H__
 
 #include "Component.h"
-#include "Gpio.h"
+#include "IGpio.h"
 #include "TimerService.h"
 
 
